@@ -1,0 +1,100 @@
+﻿<Page x:Class="WpfUI.SdesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SdesPage">
+
+    <Grid Background="White">
+        <StackPanel>
+            <Button Name="CipherSelectionMenuButton" Foreground="#FF0075CE" BorderThickness="0,0,0,0" MouseDoubleClick="CipherSelectionMenuButton_MouseDoubleClick">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0"/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                </Button.Background>
+                <TextBlock TextDecorations="Underline">
+                    Cipher selection menu
+                </TextBlock>
+            </Button>
+            <TextBlock HorizontalAlignment="Center" FontSize="36" FontWeight="Bold">S-DES</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ToggleButton Name ="EncryptToggleButton" IsChecked="True" Margin="5, 0, 5, 0" Click="EncryptToggleButton_Click">Encrypt</ToggleButton>
+                <ToggleButton Name ="DecryptToggleButton" Margin="5, 0, 5, 0" Click="DecryptToggleButton_Click">Decrypt</ToggleButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label FontSize="18" Width="205" HorizontalAlignment="Left" Margin="50, 0, 0, 5">Please enter a 10-bit key</Label>
+                    <TextBox Name="Input10bitKeyTextBox" Width="138" HorizontalAlignment="Left" Margin="50, 0, 0, 10" FontSize="14" TextChanged="Input10bitKeyTextBox_TextChanged"/>
+                </StackPanel>
+                <StackPanel Name="KeyInBinaryStackPanel" Visibility="Hidden">
+                    <Label FontSize="18" Width="205" HorizontalAlignment="Left" Margin="50, 5, 0, 5">Key in binary:</Label>
+                    <TextBox Name="KeyInBinaryTextBox" Width="138" IsEnabled="False"  HorizontalAlignment="Left" Margin="50, 0, 0, 10" FontSize="14" TextChanged="Input10bitKeyTextBox_TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+            <TabControl>
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock Margin="3">Text</TextBlock>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <StackPanel>
+                            <Label>Enter the text to encrypt:</Label>
+                            <TextBox
+                                            Name="TextToEncryptTextBox"
+                                            TextWrapping="Wrap"
+                                            AcceptsReturn="True"
+                                            VerticalScrollBarVisibility="Visible"
+                                            MaxHeight="65">
+                            </TextBox>
+                            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
+                                <Button Name ="EncryptBtn" Margin="140, 5, 5, 0" Click="EncryptBtn_Click" Width="93">Encrypt</Button>
+                                <CheckBox Name="EnableParallelBlockEnryptionCheckBox" Margin="60, 5, 5, 5">Parallel block encryption</CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+                                <Label>Time elapsed:</Label>
+                                <Label Name="TimeElapsedLabel"></Label>
+                            </StackPanel>
+                            <Label Name="DecryptedTextLabel">Encrypted text in HEX:</Label>
+                            <TextBox
+                                            Name="EncryptedTextTextBox"
+                                            TextWrapping="Wrap"
+                                            AcceptsReturn="True"
+                                            VerticalScrollBarVisibility="Visible"
+                                            MaxHeight="65">
+                            </TextBox>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock Margin="3">File</TextBlock>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <StackPanel>
+                            <Button Name="FileSelectionButton" Width="114" Margin="0, 10, 0, 10" Click="FileSelectionButton_Click">Select file</Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Selected file:</Label>
+                                <Label Name="SelectedFileLabel"></Label>
+                            </StackPanel>
+                            <Label Name="FileSizeLabel" HorizontalAlignment="Center">0.0 MB</Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="EncryptFileButton" Width="114" Margin="140, 5, 5, 10" Click="EncryptFileButton_Click">Encrypt</Button>
+                                <CheckBox Name="EnableParallelFileBlockEnryptionCheckBox" Margin="60, 5, 5, 5">Parallel block encryption</CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 0">
+                                <Label>Time elapsed:</Label>
+                                <Label Name="TimeElapsedForFileLabel"></Label>
+                            </StackPanel>
+                            <ProgressBar Name="FileEncryptionProgressBar" Height="13" Width="500"></ProgressBar>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Page>

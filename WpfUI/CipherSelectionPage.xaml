@@ -1,0 +1,26 @@
+﻿<Page x:Class="WpfUI.CipherSelectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CipherSelectionPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <TextBlock TextAlignment="Center" FontSize="32">Cipher selection menu</TextBlock>
+            <ListBox Margin="0, 20, 0, 0">
+                <ListBoxItem HorizontalContentAlignment="Center" Background="LightGray" FontWeight="Bold" FontSize="22" MouseDoubleClick="AesListBoxItem_MouseDoubleClick">AES</ListBoxItem>
+                <ListBoxItem HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="22" MouseDoubleClick="SdesListBoxItem_MouseDoubleClick">S-DES</ListBoxItem>
+                <ListBoxItem HorizontalContentAlignment="Center" Background="LightGray" FontWeight="Bold" FontSize="22" MouseDoubleClick="LfsrListBoxItem_MouseDoubleClick">LFSR</ListBoxItem>
+                <ListBoxItem HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="22" MouseDoubleClick="GostListBoxItem_MouseDoubleClick">GOST 28147-89</ListBoxItem>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Page>
